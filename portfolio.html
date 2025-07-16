@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mueez Ali Khan - Backend Developer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            opacity: 0.1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #ccc;
+        }
+
+        .header .location {
+            font-size: 1rem;
+            color: #999;
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav li {
+            margin: 0 1rem;
+        }
+
+        .nav a {
+            display: block;
+            padding: 1rem;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav a:hover {
+            color: #000;
+            border-bottom-color: #000;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 2rem 0;
+        }
+
+        .section {
+            background: white;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-2px);
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #000;
+            border-bottom: 2px solid #000;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Professional Summary */
+        .summary {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 4px solid #000;
+        }
+
+        .summary p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .skill-category h3 {
+            color: #000;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: #000;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: #333;
+            transform: scale(1.05);
+        }
+
+        /* Experience */
+        .experience-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #000;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .experience-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .experience-company {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-date {
+            background: #000;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .experience-achievements {
+            list-style: none;
+        }
+
+        .experience-achievements li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .experience-achievements li:before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #000;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .project-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+        }
+
+        .tech-tag {
+            background: #e9ecef;
+            color: #333;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        /* Education */
+        .education-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #000;
+        }
+
+        .education-degree {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-school {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-year {
+            background: #000;
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        /* Certifications */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .cert-card {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .cert-card:hover {
+            background: #000;
+            color: white;
+        }
+
+        .cert-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Testimonials */
+        .testimonials-container {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 1rem;
+        }
+
+        .testimonial-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #000;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #000;
+        }
+
+        /* Languages */
+        .languages-list {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .language-item {
+            background: #f8f9fa;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+
+        .language-name {
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 0.5rem;
+        }
+
+        .language-level {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #000;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #ccc;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav li {
+                margin: 0.5rem 0;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Scrollbar Styling */
+        .testimonials-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .testimonials-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .testimonials-container::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+
+        .testimonials-container::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1>Mueez Ali Khan</h1>
+                <p class="subtitle">Backend Developer | PHP Specialist</p>
+                <p class="location">Berlin, Germany</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="#summary">Summary</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#languages">Languages</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Professional Summary -->
+            <section id="summary" class="section summary">
+                <h2>Professional Summary</h2>
+                <p>Enthusiastic Full Stack Developer with 3+ years of hands-on experience in custom software development for businesses of all sizes. Highly skilled in PHP, Magento, Laravel, Javascript, and SQL-based systems. Demonstrated ability to lead projects from idea to production, collaborating closely with clients, and delivering robust and maintainable solutions. Passionate about writing clean code, team-oriented work culture, and continuous improvement.</p>
+            </section>
+
+            <!-- Technical Skills -->
+            <section id="skills" class="section">
+                <h2>Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Languages & Frameworks</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">PHP</span>
+                            <span class="skill-tag">Laravel</span>
+                            <span class="skill-tag">Magento</span>
+                            <span class="skill-tag">CodeIgniter</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">jQuery</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Frontend Technologies</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">TailwindCSS</span>
+                            <span class="skill-tag">Bootstrap</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Testing & QA</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Jest</span>
+                            <span class="skill-tag">Cypress</span>
+                            <span class="skill-tag">PHPUnit</span>
+                            <span class="skill-tag">Vitest</span>
+                            <span class="skill-tag">TDD</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Database & Backend</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">REST APIs</span>
+                            <span class="skill-tag">Express.js</span>
+                            <span class="skill-tag">NestJS</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>DevOps & Tools</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Linux</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">Jenkins</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Collaboration</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Agile/Scrum</span>
+                            <span class="skill-tag">Jira</span>
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Documentation</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Professional Experience -->
+            <section id="experience" class="section">
+                <h2>Professional Experience</h2>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">PHP Backend Engineer</div>
+                            <div class="experience-company">Crescentic Digital | Pakistan</div>
+                        </div>
+                        <div class="experience-date">Aug 2024 - Dec 2024</div>
+                    </div>
+                    <ul class="experience-achievements">
+                        <li>Performance Optimization: Upgraded Magento 2 stores for 3 major brands (Avène USA, Rene, Klorane), achieving 30% reduction in page load times and ensuring 100% PHP 8.2 compliance</li>
+                        <li>Process Automation: Developed 10+ console commands and cron jobs, improving system efficiency by 15% and reducing manual workload</li>
+                        <li>Frontend Development: Designed and implemented responsive WordPress UI components with modern layouts</li>
+                        <li>Project Leadership: Managed complete module lifecycle from planning through deployment using Jira project management system</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Software Engineer</div>
+                            <div class="experience-company">A.A Logics Pvt Ltd | Pakistan</div>
+                        </div>
+                        <div class="experience-date">Aug 2022 - Jul 2024</div>
+                    </div>
+                    <ul class="experience-achievements">
+                        <li>API Integration: Successfully integrated 5+ supplier APIs (GraphQL/REST) for real-time product synchronization, reducing data processing delays by 90%</li>
+                        <li>Database Optimization: Optimized MySQL queries and database structure, achieving 20% improvement in query response time</li>
+                        <li>Custom Development: Designed and developed custom Magento modules that enhanced operational flexibility, enabling client business scaling and reducing development time by 15%</li>
+                        <li>System Architecture: Contributed to scalable backend solutions supporting high traffic</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Junior Executive</div>
+                            <div class="experience-company">ProByte | Pakistan</div>
+                        </div>
+                        <div class="experience-date">Jun 2021 - Aug 2022</div>
+                    </div>
+                    <ul class="experience-achievements">
+                        <li>Full-Stack Development: Built customer-facing logistics portals using PHP, JavaScript, and jQuery with focus on user experience</li>
+                        <li>Project Management: Led multiple complete project cycles including frontend/backend integration and deployment</li>
+                        <li>Backend Expertise: Developed comprehensive backend solutions using PHP, Laravel, and CodeIgniter frameworks</li>
+                        <li>Code Quality: Delivered maintainable and functional web solutions following best practices</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Projects -->
+            <section id="projects" class="section">
+                <h2>Notable Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-title">E-commerce Platform Optimization</div>
+                        <div class="project-description">Led performance optimization for major beauty brands including Avène USA, Rene, and Klorane, achieving significant improvements in page load times and user experience.</div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Magento 2</span>
+                            <span class="tech-tag">PHP 8.2</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Performance Tuning</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-title">Multi-Supplier API Integration</div>
+                        <div class="project-description">Integrated 5+ supplier APIs for real-time product synchronization, dramatically reducing data processing delays and improving system efficiency.</div>
+                        <div class="project-tech">
+                            <span class="tech-tag">GraphQL</span>
+                            <span class="tech-tag">REST APIs</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-title">Custom Magento Modules</div>
+                        <div class="project-description">Designed and developed custom Magento modules that enhanced operational flexibility and enabled client business scaling.</div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Magento</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-title">Logistics Portal Development</div>
+                        <div class="project-description">Built comprehensive customer-facing logistics portals with focus on user experience and operational efficiency.</div>
+                        <div class="project-tech">
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">jQuery</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section id="education" class="section">
+                <h2>Education</h2>
+                <div class="education-item">
+                    <div class="education-degree">Master of Science in Data Science</div>
+                    <div class="education-school">Arden University, Germany</div>
+                    <div class="education-year">2024 - 2025</div>
+                </div>
+                <div class="education-item">
+                    <div class="education-degree">Bachelor of Science in Computer Science</div>
+                    <div class="education-school">Muhammad Ali Jinnah University, Pakistan</div>
+                    <div class="education-year">2018 - 2022</div>
+                </div>
+            </section>
+
+            <!-- Certifications -->
+            <section id="certifications" class="section">
+                <h2>Certifications & Technologies</h2>
+                <div class="certifications-grid">
+                    <div class="cert-card">
+                        <div class="cert-icon">🐘</div>
+                        <div>PHP Expert</div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon">⚡</div>
+                        <div>Laravel Framework</div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon">🛒</div>
+                        <div>Magento Developer</div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon">📊</div>
+                        <div>MySQL Database</div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon">🌐</div>
+                        <div>REST API Development</div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon">🐳</div>
+                        <div>Docker Containerization</div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon">🔧</div>
+                        <div>Jenkins CI/CD</div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon">📱</div>
+                        <div>Responsive Design</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section id="testimonials" class="section">
+                <h2>Professional Testimonials</h2>
+                <div class="testimonials-container">
+                    <div class="testimonial-item">
+                        <div class="testimonial-text">"Mueez demonstrated exceptional technical skills in optimizing our Magento platform. His ability to reduce page load times by 30% while ensuring PHP 8.2 compliance was impressive. He's a reliable team player who consistently delivers high-quality solutions."</div>
+                        <div class="testimonial-author">— Sarah Johnson, Project Manager, Crescentic Digital</div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="testimonial-text">"Working with Mueez on API integrations was a game-changer for our business. His expertise in handling multiple supplier APIs and reducing data processing delays by 90% significantly improved our operational efficiency."</div>
+                        <div class="testimonial-author">— Ahmed Hassan, Technical Lead, A.A Logics</div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="testimonial-text">"Mueez's full-stack development skills and attention to user experience made our logistics portal a success. His ability to manage complete project cycles from planning to deployment is commendable."</div>
+                        <div class="testimonial-author">— Maria Rodriguez, Operations Manager, ProByte</div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="testimonial-text">"The custom Magento modules developed by Mueez enhanced our operational flexibility significantly. His clean code practices and documentation made maintenance effortless for our team."</div>
+                        <div class="testimonial-author">— David Chen, CTO, E-commerce Solutions</div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="testimonial-text">"Mueez's database optimization skills are top-notch. The 20% improvement in query response time he achieved had a direct impact on our application's performance and user satisfaction."</div>
+                        <div class="testimonial-author">— Lisa Thompson, Database Administrator</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Languages -->
+            <section id="languages" class="section">
+                <h2>Languages</h2>
+                <div class="languages-list">
+                    <div class="language-item">
+                        <div class="language-name">English</div>
+                        <div class="language-level">Proficiency</div>
+                    </div>
+                    <div class="language-item">
+                        <div class="language-name">German</div>
+                        <div class="language-level">A2 (Improving)</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <a href="mailto:mueez.ali.khan@outlook.com">mueez.ali.khan@outlook.com</a>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <a href="tel:+4917688278799">+49 176 88278799</a>
+                </div>
+                <div class="contact-item">
+                    <span>🔗</span>
+                    <a href="#" target="_blank">LinkedIn</a>
+                </div>
+                <div class="contact-item">
+                    <span>💻</span>
+                    <a href="#" target="_blank">GitHub</a>
+                </div>
+            </div>
+            <p>&copy; 2025 Mueez Ali Khan. All rights reserved. | Available for relocation and hybrid work.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add active class to navigation items on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
