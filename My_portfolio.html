@@ -414,7 +414,7 @@ Result: 50K+ downloads in first month
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'John_Doe_CV.txt';
+            a.download = 'John_Doe_CV.pdf';
             document.body.appendChild(a);
             a.click();
             window.URL.revokeObjectURL(url);
